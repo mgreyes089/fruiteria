@@ -5,22 +5,34 @@ public class CoinGame {
 
     private static final int CROSS=1;
     private static final int FACE=2;
+    private static int headCounter=0;
+    private static int totalThrows=0;
 
 
     public static void main(String[] args) {
         while (askIfWantsToThrowCoin()){
             int value = throwCoin();
-            if (value == FACE) {
-                System.out.println("face");
-            }
-            if (value == CROSS) {
-                System.out.println("cross");
-            }
-
-
-
+            calculateResult(value);
+            printResult();
 
         }
+    }
+
+    private static void printResult() {
+        System.out.println("Resultat: Cares: " + headCounter + "Total tirades " + totalThrows);
+    }
+
+    private static void calculateResult(int value) {
+        if (value == FACE) {
+            System.out.println("face");
+            headCounter++;
+        }
+        if (value == CROSS) {
+            System.out.println("cross");
+        }
+        totalThrows++;
+
+
     }
 
     private static int throwCoin() {
